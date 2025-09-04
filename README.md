@@ -1,6 +1,6 @@
 # (WIP) Attitute C++ Math Library for Aerospacial/3D Games/Robotics/Graphics/Animations etc
 
-## Requirements
+## Features
 
 - C++ 11
 - Simple
