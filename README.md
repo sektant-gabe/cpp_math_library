@@ -214,12 +214,15 @@ $$
 ## Matrix Multiplication
 
 - Matrices can be multiplied if they are **conformable!**
+
 $$
 \large\mathbf{C}(m \times n) = \mathbf{A}(m \times t) \mathbf{B}(t \times n)
 $$
+
 $$\large
 c_{ij} = \sum_{k=1}^{t} \ a_{ik}\ b_{kj}
 $$
+
 $$
 \begin{gather}
 j = 1,\dots ,t\\
@@ -227,7 +230,6 @@ i = 1,\dots ,m
 \end{gather}
 $$
 
-![[Pasted image 20250903181501.png]]
 $$
 \stackrel{\mbox{$3\times2$}}{%
 \large\begin{bmatrix}
@@ -235,21 +237,18 @@ c_{11} & c_{12} \\[0.3em]
 c_{21} & c_{22} \\[0.3em]
 c_{31} & c_{32} \\[0.3em]
 \end{bmatrix}
-}=
-\stackrel{\mbox{$3\times3$}}{%
+}=\stackrel{\mbox{$3\times3$}}{%
 \large\begin{bmatrix}
 a_{11} & a_{12} & a_{13}\\[0.3em]
 a_{21} & a_{22} & a_{23}\\[0.3em]
 a_{31} & a_{32} & a_{33}\\[0.3em]
 \end{bmatrix}
-}
-\stackrel{\mbox{$3\times2$}}{%
+}\stackrel{\mbox{$3\times2$}}{%
 \large\begin{bmatrix}
 b_{11} & b_{12} \\[0.3em]
 b_{21} & b_{22} \\[0.3em]
 b_{31} & b_{32} \\[0.3em]
-\end{bmatrix}
-}
+\end{bmatrix}}
 $$
 
 - Corresponding elements multiplied together and then summed
@@ -287,8 +286,7 @@ a_{11} & a_{12} & \cdots & a_{m1} \\[0.3em]
 a_{21} & a_{22} & \cdots & a_{m2} \\[0.3em]
 \vdots & \vdots & \ddots & \vdots \\[0.3em]
 a_{1n} & a_{2n} & \cdots & a_{mn}
-\end{bmatrix}
-\ \ \ \ \ \ \ \ \ \ \
+\end{bmatrix}\ \ \ \ \ \ \ \ \ \ \
 \mathbf{A} =
 \begin{bmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\[0.3em]
@@ -303,10 +301,11 @@ $$
 
 - Square matrix of size (**N** x **N**) with all ones on the diagonal
 - Whenever we multiple a matrix by the *Identity matrix*, we just get the original matrix
+
 $$\mathbf{A}\times \mathbf{I} = \mathbf{A}$$
+
 $$\large
-\mathbf{I} =
-\begin{bmatrix}
+\mathbf{I} = \begin{bmatrix}
 1 & 0 & \cdots & 0 \\[0.3em]
 1 & 0 & \cdots & 0 \\[0.3em]
 \vdots & \vdots & \ddots & \vdots \\[0.3em]
@@ -330,9 +329,9 @@ $$
 a & b \\[0.3em]
 c & d \\[0.3em]
 \end{bmatrix}
-\end{pmatrix}
-= ad - bc
+\end{pmatrix}= ad - bc
 $$
+
 $$
 \det \begin{pmatrix}
 \begin{bmatrix}
@@ -340,8 +339,7 @@ a & b & c \\[0.3em]
 d & e & f \\[0.3em]
 g & h & i \\[0.3em]
 \end{bmatrix}
-\end{pmatrix}
-= a(ei - fh) - b(di-fg) + c(dh-eg)
+\end{pmatrix}= a(ei - fh) - b(di-fg) + c(dh-eg)
 $$
 
 
@@ -352,22 +350,31 @@ $$\Huge
 $$
 
 - A **square matrix** which satisfies the condition:
-$$\large\mathbf{A}^{-1} \mathbf{A} = \mathbf{AA}^{-1} = \mathbf{I}$$
+
+$$
+\large\mathbf{A}^{-1} \mathbf{A} = \mathbf{AA}^{-1} = \mathbf{I}
+$$
+
 - **Not all square matrices are invertible**
 - A square matrix is invertible if the determinant does not equal zero
-$$\large
-\det(\mathbf{A}) \neq 0
+
+$$
+\large\det(\mathbf{A}) \neq 0
 $$
 
 Consider the **scalar** equation:
+
 $$
 \large y = ax
 $$
+
 To find the value for $\large x$:
-$$\large
-x = \frac{1}{a}y=a^{-1}y
+
+$$\large x = \frac{1}{a}y=a^{-1}y
 $$
+
 Can we do the same with matrices?
+
 $$\Huge
 \begin{gather}
 \mathbf{X} = \mathbf{AY}\\
@@ -383,6 +390,7 @@ $$
 - Square Matrix (**N** x **N**)
 - Transpose is equal to its inverse
 - Determinant is equal to **1**
+
 $$\Huge
 \begin{gather}
 \mathbf{A}^{T}  = \mathbf{A^{-1}}\\
