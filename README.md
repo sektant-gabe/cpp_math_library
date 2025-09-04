@@ -25,33 +25,32 @@
 	- Quaternions
 
 - Easy Class Construction
-	`Vector3 v1(1.0,2.0,3.0);`
-	`Matrix33 dcm = DCM::rotationX(1.2);`
+	- `Vector3 v1(1.0,2.0,3.0);`
+	- `Matrix33 dcm = DCM::rotationX(1.2);`
 
 - Easy Element Access
-	`double x = v1.x`
-	`double y = v1.data[1]`
-	`double m11 = dcm.m11`
-	`double m12 = dcm.data[0][1]`
+	- `double x = v1.x`
+	- `double y = v1.data[1]`
+	- `double m11 = dcm.m11`
+	- `double m12 = dcm.data[0][1]`
 
 - Classes to have overloaded mathematical operators (i.e `+`, `-`, `/`, `*`):
-	`Vector3 v3 = v1 * v2;`
-	`Matrix33 dcm2 = DCM::rotationX(0.1) * DCM::rotationY(2.5);`
+	- `Vector3 v3 = v1 * v2;`
+	- `Matrix33 dcm2 = DCM::rotationX(0.1) * DCM::rotationY(2.5);`
 
 - Free functions for special operations
-	`double d = dot(v1, v2);`
-	`Vector3 v3 = cross(v1, v2);`
+	- `double d = dot(v1, v2);`
+	- `Vector3 v3 = cross(v1, v2);`
 
 - Vector transformations are handled automatically
-	`Vector3 v2_dcm = dcm * v1;`
-	`Vector3 v2_quat = quat * v1;`
-	`Vector3 v2_euler = euler * v1;`
+	- `Vector3 v2_dcm = dcm * v1;`
+	- `Vector3 v2_quat = quat * v1;`
+	- `Vector3 v2_euler = euler * v1;`
 
 - Conversion function between classes
-	`EulerAngles angles = dcm2EulerAngles(dcm,`
-		`EulerAngles::EulerSequence::XYZ);`
-	`Matrix33 dcm = eulerAngles2DCM(angles);`
-	`Quaternion q = eulerAngles2Quat(angles);`
+	- `EulerAngles angles = dcm2EulerAngles(dcm, EulerAngles::EulerSequence::XYZ);`
+	- `Matrix33 dcm = eulerAngles2DCM(angles);`
+	- `Quaternion q = eulerAngles2Quat(angles);`
 
 ## Why do we need an attitude representation:
 
@@ -65,40 +64,6 @@
 	- 3D Cartesian Coordinate System
 	- Each axis is orthogonal to the other two(i.e a change in one will not affect the other)
 
-```tikz
-\usepackage{tikz,tikz-3dplot}
-\usetikzlibrary{arrows,chains,shapes.geometric,shapes,angles,quotes}
-\begin{document}
-\tdplotsetmaincoords{60}{115}
-\huge \begin{tikzpicture}[
-		%Style
-		scale=5, tdplot_main_coords,
-		axis/.style={-latex,black,very thick},
-		vector/.style={black,very thick},
-		vector guide/.style={dashed,black,thick},
-		angle/.style={black,thick}]
-
-    \coordinate (O) at (0,0,0);
-
-    %Draw axis:
-    \draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$z$};
-    \draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$x$};
-    \draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$y$};
-
-    \tdplotsetcoord{P}{1}{30}{60}
-
-    %Draw vector line and plot:
-    \draw plot [mark=*, mark size=0.5] (P) node [right] {$\vec{v}$};
-    \draw[vector] (O) -- (P) node [right] {$\vec{v}$};
-
-    %Draw vectors guides:
-    %\draw[dashed, color=black] (O) -- (Pxy);
-    \draw[vector guide] (P) -- (Pxy) node [midway, right] {$y$};
-    \draw[vector guide] (Pxy) -- (Px) node [midway, below] {$x$};
-    \draw[vector guide] (Pxy) -- (Py) node [midway, right] {$z$};
-\end{tikzpicture}
-\end{document}
-```
 
 $$\Large
 \vec{v} = \begin{bmatrix}
@@ -110,10 +75,12 @@ $$
 
 ## Reference Frames and Coordinate System
 
-- World (Reference) Coordinate System  $\Large\mathcal{F}^w$
+- World (Reference) Coordinate System
+	- $\Large\mathcal{F}^w$
 	- Fixed in space (stays at same location and attitude)
 
-- Body/Local (Rotated) Coordinate System $\Large\mathcal{F}^b$
+- Body/Local (Rotated) Coordinate System
+	- $\Large\mathcal{F}^b$
 	- Rigidly attached to the object whose attitude we would like to describe relative to the world frame
 
 $$
@@ -167,55 +134,7 @@ $$
 $$
 ## Instantaneous Body/World Rotation Rates
 
-```tikz
-\usepackage{tikz,tikz-3dplot,graphicx,amssymb}
-\usetikzlibrary{arrows,chains,shapes.geometric,shapes,angles,quotes}
-\begin{document}
-\tdplotsetmaincoords{60}{115}
 
-\begin{tikzpicture}[
-		%Style
-		scale=5, tdplot_main_coords,
-		axis/.style={-latex,black,very thick},
-		vector/.style={black,very thick},
-		vector guide/.style={dashed,black,thick},
-		angle/.style={black,thick}]
-
-    \coordinate (O) at (0,0,0);
-
-    %Draw axis:
-    \draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{\huge $z$};
-    \draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{\huge $x$};
-    \draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{\huge $y$};
-    % Rotate 45 degrees around the Y-axis
-	\tdplotdrawarc[->,color=black]{(0,0,0.7)}{0.1}{0}{350}{anchor=south west,color=black}{\Large$q$}
-	%We move to the z-x axis
-	\tdplotsetthetaplanecoords{0}
-	%Notice you have to tell tiks-3dplot you are now in rotated coords
-	%Since tikz-3dplot swaps the planes in tdplotsetthetaplanecoords, the former y axis is now the z axis.
-	\tdplotdrawarc[tdplot_rotated_coords,->,color=black]{(0,0,0.7)}{0.1}{110}{460}{anchor=south west,color=black}{\Large$p$}
-	\tdplotsetthetaplanecoords{-90}
-	%Once again we swaps the planes. I don't know why it's working like this but we turn backwards
-	%so the arrow turns in the positive direction.
-	\tdplotdrawarc[tdplot_rotated_coords,->,color=black]{(0,0,0.7)}{0.1}{120}{470}{anchor=south west,color=black}{\Large$r$}
-    \tdplotsetcoord{P}{1}{30}{60}
-
-    %Draw vector line and plot:
-    \draw plot [mark=*, mark size=0.5] (P) node [right] {\huge $\vec{v}$};
-    \draw[vector] (O) -- (P) node [right] {\huge $\vec{v}$};
-
-    %Draw vectors guides:
-    %\draw[dashed, color=black] (O) -- (Pxy);
-    \draw[vector guide] (P) -- (Pxy) node [midway, right] {\Large $y$};
-    \draw[vector guide] (Pxy) -- (Px) node [midway, below] {\Large $x$};
-    \draw[vector guide] (Pxy) -- (Py) node [midway, right] {\Large $z$};
-\end{tikzpicture}
-\end{document}
-```
-
-- Body Roll Rate **(p)**
-- Body Pitch Rate **(q)**
-- Body Yaw Rate **(r)**
 $$
 \Large \vec{w} = \begin{bmatrix}
 p \\
