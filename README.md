@@ -87,8 +87,6 @@ $$
 \Large\Phi : \mathcal{F}^w   \leftrightarrow \mathcal{F}^b
 $$
 
-![[Pasted image 20250903140007.png]]
-
 
 ## Two Conventions:
 
@@ -122,8 +120,6 @@ $$\Large\Phi : \mathcal{F}^b   \rightarrow \mathcal{F}^w$$
 	- Computer Games
 	- Computer Graphics
 
-![[Pasted image 20250903142806.png]]
-
 
 $$
 \large\dot{\Phi} = \frac{\partial\Phi}{\partial t}
@@ -132,6 +128,7 @@ $$
 $$
 \large\Phi(t) = \int_0^t \dot{\Phi}dt
 $$
+
 ## Instantaneous Body/World Rotation Rates
 
 
@@ -142,12 +139,15 @@ q \\
 r \\
 \end{bmatrix}
 $$
+
 ## Attitude Rates and Angular Velocity
 - We usually know (or measure/describe) the angular velocity in the body frame or world frame.
 	- Need to find a relationship between the Angular Rates to Attitude Rates (nased on the method of representing the attitude)
+
 $$
 \Large \dot{\Phi} \neq \vec{w}
 $$
+
 $$
 \Large \dot{\Phi} = f(\Phi,\vec{w})
 $$
@@ -158,8 +158,6 @@ $$
 \Large
 \textbf{A}
 $$
-
-![[Pasted image 20250903174052.png]]
 
 
 ## Addition and Subtraction
@@ -177,13 +175,11 @@ $$
 \begin{bmatrix}
 a_{11} + b_{11} & a_{12} + b_{12} \\
 a_{21} + b_{21} & a_{22} + b_{22}
-\end{bmatrix}
-=
+\end{bmatrix}=
 \begin{bmatrix}
 a_{11} & a_{12} \\
 a_{21} & a_{22}
-\end{bmatrix}
-=
+\end{bmatrix}=
 \begin{bmatrix}
 b_{11} & b_{12} \\
 b_{21} & b_{22}
@@ -258,7 +254,6 @@ $$
 
 - Corresponding elements multiplied together and then summed
 
-![[Pasted image 20250903182418.png]]
 
 $$
 \large
