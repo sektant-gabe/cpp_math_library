@@ -94,7 +94,6 @@ $$
 
 $$\Large\Phi : \mathcal{F}^w   \rightarrow \mathcal{F}^b$$
 
-> **Info**
 > Im using this one
 
 2. Attitude = Rotation of *Rotated Frame* relative to *Reference Frame*
