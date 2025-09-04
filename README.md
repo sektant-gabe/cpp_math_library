@@ -1,4 +1,4 @@
-# Attitute C++ Math Library for Aerospacial/Game Development/Robotis/Graphics/Animation etc
+# (WIP) Attitute C++ Math Library for Aerospacial/Game Development/Robotis/Graphics/Animation etc
 
 ## Requirements
 
