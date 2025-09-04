@@ -68,8 +68,8 @@
 $$\Large
 \vec{v} = \begin{bmatrix}
 x \\
-y  \\
-53\\
+y \\
+z \\
 \end{bmatrix}
 $$
 
